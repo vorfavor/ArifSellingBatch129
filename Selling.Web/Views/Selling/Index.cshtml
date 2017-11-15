@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div id="idListSelling">
+
+
+</div>
+
+<script>
+    $(document).ready(function(){
+        //alert("Hello dari javascript");
+        $.ajax({
+            url:'/Ajax/GetListSelling',
+            type:'GET',
+            success: function (model) {
+                $('#idListSelling').html(model);
+            }
+        })
+    });
+</script>

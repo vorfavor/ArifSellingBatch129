@@ -1,0 +1,118 @@
+﻿@* *@
+
+@model IEnumerable<Selling.ViewModel.tblOfficerViewModel>
+
+<p>
+    @*@Html.ActionLink("Buat Baru", "Create")*@
+    <button class="btn btn-info" id="idBtnCreateOfficer">
+        Buat Baru
+    </button>
+</p>
+<table class="table" id="Officer">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.tblOfficerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfficerCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfficerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfficerPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfficerStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tblOfficerID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OfficerCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OfficerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OfficerPassword)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OfficerStatus)
+                </td>
+                <td>
+                    <button class="btn btn-success btnEditOfficer" data-OfficerCode="@item.OfficerCode">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button class="btn btn-danger btnDeleteOfficer" data-officercode="@item.OfficerCode">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                    <button class="btn btn-primary btnDetailOfficer" data-officercode="@item.OfficerCode">
+                        <span class="glyphicon glyphicon-zoom-in"></span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*modal*@
+
+<script>
+    $(document).ready(function () {
+        $('#Officer').dataTable();
+    });
+    $("#idBtnCreateOfficer").click(function () {
+        $.ajax({
+            url: '/Ajax/AddDataOfficer',
+            type: 'GET',
+            success: function (model) {
+                $('#idModalBodyCreateDataOfficer').html(model);
+                $('#idModalCreateDataOfficer').modal('show');
+            }
+        })
+    });
+    $(".btnEditOfficer").click(function () {
+        var vEditOfficer = $(this).attr("data-OfficerCode");
+        $.ajax({
+            url: '/Ajax/EditDataOfficer',
+            type: 'GET',
+            data: { cd: vEditOfficer },
+            success: function (model) {
+                $('#idModalBodyUpdateDataOfficer').html(model);
+                $('#idModalUpdateDataOfficer').modal('show');
+            }
+        })
+    });
+    $(".btnDetailOfficer").click(function () {
+        var vDetailOfficer = $(this).attr("data-OfficerCode");
+        alert(vDetailOfficer);
+    });
+    $(".btnDeleteOfficer").click(function () {
+        var vDeleteOfficer = $(this).attr("data-OfficerCode");
+        if (confirm("Apakah anda yakin ?")) {
+            $.ajax({
+                url: '/Officer/Delete',
+                type: 'POST',
+                data: {cd:vDeleteOfficer},
+                success: function (model) {
+                    if (model.pesan = "sukses") {
+                        alert("data berhasil dihapus");
+                        window.location.href = "/Officer/Index";        //reload halaman index officer
+                    }
+                    else {
+                        alert("data gagal dihapus");
+                    }
+                }
+            })
+        }
+    });
+
+</script>

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Selling.ViewModel.tblItemViewModel>
+
+<p>
+    <button class="btn btn-info" id="idBtnCreateItem">
+        Buat Baru
+    </button>
+</p>
+<table class="table" id="Item">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.tblItemID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuyingPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SellingPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pieces)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tblItemID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BuyingPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SellingPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pieces)
+                </td>
+                <td>
+                    <button class="btn btn-success btnEditItem" data-itemcode="@item.ItemCode">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button class="btn btn-danger btnDeleteItem" data-itemcode="@item.ItemCode">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                    <button class="btn btn-primary btnDetailItem" data-itemcode="@item.ItemCode">
+                        <span class="glyphicon glyphicon-zoom-in"></span>
+                    </button>
+               
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        $('#Item').dataTable();
+    });
+    $("#idBtnCreateItem").click(function () {
+        $.ajax({
+            url: '/Ajax/AddDataItem',
+            type: 'GET',
+            success: function (model) {
+                $('#idModalBodyCreateDataItem').html(model);
+                $('#idModalCreateDataItem').modal('show');
+            }
+        })
+    });
+</script>

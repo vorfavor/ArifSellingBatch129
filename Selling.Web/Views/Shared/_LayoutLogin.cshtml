@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/dist/css/AdminLTE.min.css" rel="stylesheet" />
+    <link href="~/plugins/iCheck/square/blue.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/dist/css/skins/skin-blue.min.css" rel="stylesheet" />
+
+</head>
+<body class="hold-transition login-page" style="background:darkgrey;">
+    <div class="login-box">
+        <div class="login-logo">
+            <b>Login User</b>
+            <p></p>
+            Selling
+        </div>
+        <div class="login-box-body">
+            @RenderBody()
+            <hr />
+            <p class="login-box-msg">Bagian Penjualan</p>
+        </div>
+    </div>
+</body>
+</html>

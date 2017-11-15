@@ -1,0 +1,14 @@
+D:\batch129\Selling\Selling.Repo\bin\Debug\Selling.Repo.dll.config
+D:\batch129\Selling\Selling.Repo\bin\Debug\Selling.Repo.dll
+D:\batch129\Selling\Selling.Repo\bin\Debug\Selling.Repo.pdb
+D:\batch129\Selling\Selling.Repo\bin\Debug\EntityFramework.dll
+D:\batch129\Selling\Selling.Repo\bin\Debug\EntityFramework.SqlServer.dll
+D:\batch129\Selling\Selling.Repo\bin\Debug\Selling.Model.dll
+D:\batch129\Selling\Selling.Repo\bin\Debug\Selling.ViewModel.dll
+D:\batch129\Selling\Selling.Repo\bin\Debug\Selling.Model.pdb
+D:\batch129\Selling\Selling.Repo\bin\Debug\Selling.ViewModel.pdb
+D:\batch129\Selling\Selling.Repo\bin\Debug\EntityFramework.xml
+D:\batch129\Selling\Selling.Repo\bin\Debug\EntityFramework.SqlServer.xml
+D:\batch129\Selling\Selling.Repo\obj\Debug\Selling.Repo.csprojResolveAssemblyReference.cache
+D:\batch129\Selling\Selling.Repo\obj\Debug\Selling.Repo.dll
+D:\batch129\Selling\Selling.Repo\obj\Debug\Selling.Repo.pdb

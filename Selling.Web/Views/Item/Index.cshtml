@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div id="idListItem">
+
+
+</div>
+<div id="idModalCreateDataItem" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="idModalBodyCreateDataItem" class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="idBtnSaveDataOfficer">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        //alert("Hello dari javascript");
+        $.ajax({
+            url:'/Ajax/GetListItem',
+            type:'GET',
+            success: function (model) {
+                $('#idListItem').html(model);
+            }
+        })
+    });
+    $('#idBtnSaveDataItem').click(function () {
+
+        var vFormItem = $('#idFormItem').serialize();
+        $.ajax({
+            url: '/Item/Create',
+            type: 'POST',
+            data: vFormItem,
+            success: function (model) {
+                if (model.pesan = "sukses") {
+                    alert("data berhasil disimpan");
+                    $("#idModalCreateDataItem").modal('hide');
+                    window.location.href = "/Item/Index";        //reload halaman index officer
+                }
+                else {
+                    alert("data gagal disimpan");
+                }
+            }
+        })
+    });
+</script>
